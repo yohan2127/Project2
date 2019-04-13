@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>wine_inventory</title>
+  <!-- Latest compiled and minified CSS & JS --> 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="/styles/dashboard-content.css" media="screen" title="no title" charset="utf-8">
+<title>Home Page</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/4.0.1/placeholders.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<link rel="stylesheet" href="/styles/order.css" type="text/css" />
+</head>
+<body>
+<!--Top Row for columns-->
+<div class="container-fluid d-flex flex-wrap-reverse">
+
+    <!--favicon-->
+    <div class="col-sm-12 col-md-12 col-lg-8 d-flex" id="navigation-box">
+      <i class="fa fa-hacker-news fa-4x" aria-hidden="true" id="favicon"></i>
+  
+      <!--collapsible navigation-->
+      <div class="topnav" id="myTopnav">
+        <a class="active">Dashboard</a>
+        <a href="/mycellar">My Cellar</a>
+        <a href="/contacts">Contacts</a>
+        <a href="/orders">Orders</a>
+        <a href="/csv">Import wine </a>
+        <a href="javascript:void(0);" class="icon" onclick="collapsClick()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      <br>
+    </div>
+  
+    <!--header column 2-->
+    <div class="col-sm-12 col-md-12 col-lg-4 d-flex flex-row-reverse">
+  
+      <!--profile and logout dropdown-->
+      <div class="admin-login">
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">Username</button>
+          <div id="myDropdown" class="dropdown-content">
+            <button type="button" class="btn btn-light w-100" data-toggle="modal"
+              data-target="#profileUpdateModal">Profile</button>
+            <a class="btn btn-light w-100" href="/admin">News Feed</a>
+            <a class="btn btn-light w-100" href="/logout">Log Out</a>
+          </div>
+        </div>
+        <!--User logo......Favicon-->
+        <div class="userLogo"><i class="fa fa-user-circle fa-4x" aria-hidden="true" id="favicon"></i></div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+  <!--Datatable begins here-->
+  <div class="container" style="width:100%"> 
+    <div class="row">
+      <div class="col-lg-12">
+        
+          
+         
+<button type="submit" class="btn btn-secondary mb-2 customBtn" id="createAccBtn" data-toggle="modal" data-target="#accModal">Create new</button>
+<br><br>
+
+<div id="myInputTextField">
+        <label for="global_filter" id="lblSearch">Search</label>
+        <input class="global_filter" id="global_filter" type="text" placeholder="Enter Search Text Here..." >
+</div>            
+
+<table id="well-section" class="display" cellspacing="0" style="width: 100%;text-align :left;">
+              <thead>            
+      <tr>
+          <th class='columnFilter'>Order ID</th>
+          <th class='columnFilter'>Name of Wine</th>
+          <th class='columnFilter'>purchased price</th>  
+          <th class='columnFilter'>quantity</th> 
+          <th class='columnFilter'>status</th> 
+           <th >Action</th>  
+      </tr>
+              </thead>
+       
+              
+          </table>
+
+         
+       
+      </div>
+    </div>
+  </div>
+
+  <!--Create new item modal begins here-->
+  <div class="modal fade" id="accModal" tabindex="-1" role="dialog" aria-labelledby="accCreate" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-white">
+          <h5 class="modal-title text-center" id="accCreate">Customer Creation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="createForm">
+            <form>
+            <div class="container">
+              <form>
+                  <div id="VarietyField">
+                      <label for="Variety">Variety</label>
+                      <select  type="text" class="form-control txtBox" placeholder="Variety" id="Variety" required>  
+                        <option value="">Select</option> 
+                        <option value="Albarino">Albarino</option>
+                        <option value="Bordeaux">Bordeaux</option>
+                        <option value="Cabernet Sauvignon">Cabernet Sauvignon</option>
+                        <option value="Carignan ">Carignan </option>                         
+                        <option value="Chardonnay">Chardonnay</option>
+                        <option value="Grenache">Grenache</option>
+                        <option value="Malbec">Malbec</option>
+                        <option value="Muscat ">Muscat </option> 
+                        <option value="Pinot Gris">Pinot Gris</option>
+                        <option value="Pinot Noir">Pinot Noir</option>
+                        <option value="Pollock">Pollock</option>
+                        <option value="Riesling ">Riesling </option> </select>
+                    </div>  
+                <div id="NameOfWineField" style="white-space:nowrap">
+                    <label for="NameOfWine">Name of wine</label>
+                  <select  type="text" class="form-control txtBox" placeholder="Name of Wine" id="NameOfWine" required> </select>
+                </div>
+                <div id="PurchasedPriceField">
+                    <label for="PurchasedPrice">Unit Price</label>
+                  <input type="Number" class="form-control txtBox" placeholder="Purchased Price" id="PurchasedPrice" required>
+                </div>
+                <label for="Quantity">Quantity</label>
+                <div id="QuantityField">
+                  <input type="text" class="form-control txtBox" placeholder="Quantity" id="Quantity" required>
+                </div>
+                <div id="StatusField">
+                    <label for="Status">Status</label>
+                  <input type="text" class="form-control txtBox" placeholder="Status" id="Status" required>
+                </div>
+                 
+                </div>
+              </form>          
+              <div class="row text-center">
+              <button type="submit" id="createNew" class="btn btn-secondary mb-2 customBtn">Create New</button>
+            </div>
+            </div>
+          </form>
+        </div>
+        <br>
+      </div>
+    </div>
+  
+<!--edit modal dialog begins here-->
+<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="accCreate" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-white">
+        <h5 class="modal-title text-center" id="accCreate">Customer Update</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="createForm">
+          <form>
+          <div class="container">
+            <form>
+                <div id="VarietyField">
+                    <label for="NameOfWineEdit">VarietyEdit</label>
+                    <select  type="text" class="form-control txtBox" placeholder="Variety" id="VarietyEdit" required> 
+                      <option value="">Select</option> 
+                      <option value="var 1">var 1</option>
+                      <option value="var 2">var 2</option>
+                      <option value="var 3">var 3</option>
+                      <option value="var 4">var 5</option>
+                    </select>
+                  </div>
+              <div id="NameOfWineField">
+                  <label for="NameOfWineEdit">Name of wine</label>
+                <select  type="text" class="form-control txtBox" placeholder="Name of Wine" id="NameOfWineEdit" required> </select>
+              </div>
+              <div id="PurchasedPriceField">
+                  <label for="PurchasedPriceEdit">Name of wine</label>
+                <input type="text" class="form-control txtBox" placeholder="Purchased Price" id="PurchasedPriceEdit" required>
+              </div>
+              <div id="QuantityField">
+                  <label for="QuantityEdit">Quantity</label>
+                <input type="text" class="form-control txtBox" placeholder="Quantity" id="QuantityEdit" required>
+              </div>
+              <div id="StatusField">
+                  <label for="StatusEdit">Status</label>
+                <input type="text" class="form-control txtBox" placeholder="Status" id="StatusEdit" required>
+              </div>
+               
+              </div>
+            </form>          
+            <div class="row text-center">
+            <button type="submit"  class="btn btn-secondary mb-2 customBtn Edit">update</button>
+          </div>
+          </div>
+        </form>
+      </div>
+      <br>
+    </div>
+  </div>
+  <script src="js/order.js" type="text/javascript"></script>
+</body>
+</html>

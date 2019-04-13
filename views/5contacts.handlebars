@@ -1,0 +1,428 @@
+<!--Top Row for columns-->
+<div class="container-fluid d-flex flex-wrap-reverse">
+
+<!--favicon-->
+<div class="col-sm-12 col-md-12 col-lg-8 d-flex" id= "navigation-box">
+  <i class="fa fa-hacker-news fa-4x" aria-hidden="true" id="favicon"></i>
+
+<!--collapsible navigation-->
+  <div class="topnav" id="myTopnav">
+    <a href="/admin">Dashboard</a>
+    <a href="/mycellar">My Cellar</a>
+    <a class="active">Contacts</a>
+    <a href="/orders">Orders</a>
+    <a href="/csv">Import wine </a>
+    <a href="javascript:void(0);" class="icon" onclick="collapsClick()">
+      <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  <br>
+</div>
+
+<!--header column 2-->
+    <div class="col-sm-12 col-md-12 col-lg-4 d-flex flex-row-reverse">
+
+<!--profile and logout dropdown--> 
+  <div class="admin-login">
+    <div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn">Username</button>
+          <div id="myDropdown" class="dropdown-content">
+            <button type="button" class="btn btn-light w-100" data-toggle="modal" data-target="#profileUpdateModal">Profile</button>
+            <a class="btn btn-light w-100" href="/admin">News Feed</a>
+            <a class="btn btn-light w-100" href="/logout">Log Out</a>
+          </div>
+      </div>
+<!--User logo......Favicon-->
+  <div class="userLogo"><i class="fa fa-user-circle fa-3x" aria-hidden="true" id="favicon"></i></div>
+  <div class="logoutBumper"></div>
+    </div>  
+  </div>
+</div>
+
+    
+<!--background and body container dashboard contents-->
+<div class="container-fluid d-flex flex-wrap" id="data-page">
+
+<!--Clients table-->
+<div class="card border-secondary mt-5 ml-5" style="width: 60rem;">
+  <div class="card-header"><h3>Clients</h3></div>
+  <div class="card-body text-secondary">
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+      <th scope="col">Country</th>
+      <th scope="col">Account Status</th>
+      <th scope="col">email</th>
+      <th scope="col">phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+       <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+       <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+       <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+       <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+       <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+     <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+       <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<!--messages Table-->
+  <div class="card border-secondary mt-5 ml-5" style="width: 20rem;">
+  <div class="card-header"><h3>Email..</h3></div>
+  <div class="card-body text-secondary">
+    <h5 class="card-title" style="color:black">Inbox</h5>
+    <p class="card-text">
+      <b>Bobby Burnet.</b></br>Hello Emmanuel, Thank..</br>
+      </br><b>Carol Smith.</b></br>Dear Emmanuel, I am call..</br>
+      </br><b>Steven Fella.</b></br>Hey Buddy, Can you..</br>
+      </br><b>Jimmy Dean.</b></br>Dont forget about my wine..</br>
+      </br><b>Susan Kimmel.</b></br>Dear Emmanuel, Thanks again..</br>
+      </br><b>Bobby Burnet.</b></br>Hello Emmanuel, Thank..</br>
+      </br><b>Bobby Burnet.</b></br>Hello Emmanuel, Thank..</br>
+      </p>
+  </div>
+</div>
+</div>
+
+{{!-- The profile modal --}}
+<div class="modal fade" id="profileUpdateModal" tabindex="-1" role="dialog" aria-labelledby="profileUpdateModalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="profileUpdateModalTitle">User Profile</h5>
+      </div>
+      <div class="modal-body" id="profileUpdateModalBody">
+
+        <img id="profilePic" class="rounded-circle my-2 mx-auto" style="width: 100px; height: 100px"
+          src="/images/default-profile.jpg">
+        <br>
+
+        {{!-- First Name --}}
+        <label for="firstNameInput">First Name: </label>
+        <input id="firstNameInput" name="firstNameInput" type="text" />
+        <button id="firstNameUpdate" class="btn btn-primary btn-sm">Update</button>
+        <br>
+
+        {{!-- Last Name --}}
+        <label for="lastNameInput">Last Name: </label>
+        <input id="lastNameInput" name="lastNameInput" type="text" />
+        <button id="lastNameUpdate" class="btn btn-primary btn-sm">Update</button>
+        <br>
+
+        {{!-- email address --}}
+        <label for="emailInput">Email: </label>
+        <input id="emailInput" name="emailInput" type="text" />
+        <button id="emailUpdate" class="btn btn-primary btn-sm">Update</button>
+        <br>
+
+        {{!-- User Profile Picture link --}}
+        <label for="profilePicUrl">Profile Picture Url: </label>
+        <input id="profilePicInput" name="profilePicUrl" type="text" />
+        <button id="profilePicUpdate" class="btn btn-primary btn-sm">Update</button>
+        <br>
+
+        {{!-- password update --}}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- End of the profile modal --}}
+
+
+<script>
+function collapsClick() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+  // ========== USER PROFILE UPDATE CODE =================
+  $(document).ready(function () {
+    const modalTitleEl = $("#profileUpdateModalTitle");
+    const modalBodyEl = $("#profileUpdateModalBody");
+
+    const firstNameInput = $("#firstNameInput");
+    const firstNameUpdateBtn = $("#firstNameUpdate");
+
+    const lastNameInput = $("#lastNameInput");
+    const lastNameUpdateBtn = $("#lastNameUpdate");
+
+    const emailInput = $("#emailInput");
+    const emailUpdateBtn = $("#emailUpdate");
+
+    const profilePicInput = $("#profilePicInput");
+    const profilePicUpdateBtn = $("#profilePicUpdate");
+    const profilePicImg = $("#profilePic");
+
+    refresh();
+
+    $(firstNameUpdateBtn).click(function () {
+      const myUpdate = $(firstNameInput).val();
+      if (myUpdate) {
+        $.ajax({
+          url: '/api/profile',
+          type: 'post',
+          data: {
+            firstname: myUpdate,
+          },
+          success: function (data, textStatus, jQxhr) {
+            refresh();
+          },
+          error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+          }
+        });
+      } else {
+        alert("Please input a value to update");
+      }
+    });
+
+    $(lastNameUpdateBtn).click(function () {
+      const myUpdate = $(lastNameInput).val();
+      if (myUpdate) {
+        $.ajax({
+          url: '/api/profile',
+          type: 'post',
+          data: {
+            lastname: myUpdate,
+          },
+          success: function (data, textStatus, jQxhr) {
+            refresh();
+          },
+          error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+          }
+        });
+      } else {
+        alert("Please input a value to update");
+      }
+    });
+
+    $(emailUpdateBtn).click(function () {
+      const myUpdate = $(emailInput).val();
+      if (myUpdate) {
+        $.ajax({
+          url: '/api/profile',
+          type: 'post',
+          data: {
+            email: myUpdate,
+          },
+          success: function (data, textStatus, jQxhr) {
+            refresh();
+          },
+          error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+          }
+        });
+      } else {
+        alert("Please input a value to update");
+      }
+    });
+
+    $(profilePicUpdateBtn).click(function () {
+      const myUpdate = $(profilePicInput).val();
+      if (myUpdate) {
+        $.ajax({
+          url: '/api/profile',
+          type: 'post',
+          data: {
+            profileUrl: myUpdate,
+          },
+          success: function (data, textStatus, jQxhr) {
+            refresh();
+          },
+          error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+          }
+        });
+      } else {
+        alert("Please input a value to update");
+      }
+    });
+
+  }); // closes the .ready(function() {
+
+  let refresh = function () {
+    $(firstNameInput).val("");
+    $(lastNameInput).val("");
+    $(emailInput).val("");
+    $(profilePicInput).val("");
+
+    $.ajax({
+      url: "api/profile",
+      type: "GET"
+    }).then(function (result) {
+      // console.log(result);
+      $(firstNameInput).attr("placeholder", result.firstname);
+      $(lastNameInput).attr("placeholder", result.lastname);
+      $(emailInput).attr("placeholder", result.email);
+      if (result.profileUrl) {
+        $(profilePicInput).attr("placeholder", result.profileUrl);
+        $("#profilePic").attr("src", result.profileUrl);
+      } else {
+        $(profilePicInput).attr("placeholder", "Add a picture url!");
+        $("#profilePic").attr("src", "/images/default-profile.jpg");
+      }
+    });
+  };
+
+
+  // ========== END OF USER PROFILE UPDATE CODE =================
+</script>

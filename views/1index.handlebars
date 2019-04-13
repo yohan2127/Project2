@@ -1,0 +1,77 @@
+
+  <div class="container-fluid-img">
+    <div class="row">
+ 
+      <!--........spacer column............-->
+      <div class="hidden-xs col-sm-3 col-md-4 col-lg-4"></div>
+
+      <!--........start of Form column............-->
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 d-flex flex-column" id="login-background">
+        <div class="logo-box"></div>
+        <div class="signup-box">
+        <form class="clearfix" method="POST" action="signin">
+          <div class="container">
+            <div class="text"><h1>Global Vine</h1></div>
+            <div class="input-group" style="border-radius:5px 5px 0 0;">
+              <input id="input-field" class="form-control" type="text" name="email" placeholder="Email address">
+            </div>
+
+            <div class="input-group" style="border-radius:0 0 5px 5px;">
+              <input id="input-field" class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+
+            <button type="submit" class="login" id="login">Login</button>
+          </div>
+          <button type="button" class="btn btn-outline-info btn-sm my-1" data-toggle="modal"
+            data-target="#signUpModal">Not Registered?</button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+    <!--........spacer column............-->
+    <div class="hidden-xs col-sm-2 col-md-4 col-lg-4"></div>
+  </div>
+</div>
+<!--......end of background........-->
+
+{{!-- The sign up modal --}}
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signUpModalTitle">Create Account</h5>
+      </div>
+      <div class="modal-body" id="signUpModalBody">
+        <form id="signup" name="signup" method="post" action="/signup">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input class="text" name="email" type="email" />
+          </div>
+          <div class="form-group">
+            <label for="firstname">Firstname</label>
+            <input name="firstname" type="text" />
+          </div>
+          <div class="form-group">
+            <label for="lastname">Lastname</label>
+            <input name="lastname" type="text" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input name="password" type="password" />
+          </div>
+          <button class="btn btn-primary" type="submit" value="Sign Up">Sign Up</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- End of the profile modal --}}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>

@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>wine_inventory</title>
+  <!-- Latest compiled and minified CSS & JS --> 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="/styles/dashboard-content.css" media="screen" title="no title" charset="utf-8">
+<title>Home Page</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+<link rel="stylesheet" href="/styles/order.css" type="text/css" />
+
+
+
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.1/xlsx.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.1/shim.min.js"></script>
+</head>
+<body>
+        <div class="container-fluid d-flex flex-wrap-reverse">
+
+                <!--favicon-->
+                <div class="col-sm-12 col-md-12 col-lg-8 d-flex" id="navigation-box">
+                  <i class="fa fa-hacker-news fa-4x" aria-hidden="true" id="favicon"></i>
+              
+                  <!--collapsible navigation-->
+                  <div class="topnav" id="myTopnav">
+                    <a class="active">Dashboard</a>
+                    <a href="/mycellar">My Cellar</a>
+                    <a href="/contacts">Contacts</a>
+                    <a href="/orders">Orders</a>
+                    <a href="/csv">Import wine </a>
+                    <a href="javascript:void(0);" class="icon" onclick="collapsClick()">
+                      <i class="fa fa-bars"></i>
+                    </a>
+                  </div>
+                  <br>
+                </div>
+              
+                <!--header column 2-->
+                <div class="col-sm-12 col-md-12 col-lg-4 d-flex flex-row-reverse">
+              
+                  <!--profile and logout dropdown-->
+                  <div class="admin-login">
+                    <div class="dropdown">
+                      <button onclick="myFunction()" class="dropbtn">Username</button>
+                      <div id="myDropdown" class="dropdown-content">
+                        <button type="button" class="btn btn-light w-100" data-toggle="modal"
+                          data-target="#profileUpdateModal">Profile</button>
+                        <a class="btn btn-light w-100" href="/admin">News Feed</a>
+                        <a class="btn btn-light w-100" href="/logout">Log Out</a>
+                      </div>
+                    </div>
+                    <!--User logo......Favicon-->
+                    <div class="userLogo"><i class="fa fa-user-circle fa-4x" aria-hidden="true" id="favicon"></i></div>
+                  </div>
+                </div>
+              </div>
+              
+
+
+
+
+
+<style>
+#vdrxls_drop {
+    border:2px dashed #bbb;
+    padding:25px;
+    width: 200px;
+    text-align:center;
+}
+
+#vdrxls_drop.dragging {
+    background-color: #f1f1f1;
+    cursor: wait;
+}
+
+#vdrxls_list {
+    font-weight: bold;
+}
+</style>
+        
+<h3>Import</h3>
+<p>List to import to: <span id="vdrxls_list"></span></p>
+<div id="vdrxls_drop">Drop a csv file here</div>
+<p>Or click here to select a file</p>
+<input type="file" id="vdrxls_file" accept=".csv" />
+
+<p id="vdrxls_message"></p>
+</body>
+</html>
+<script src="js/import.js" type="text/javascript"></script>
+<script>
+    $(function() {
+        var $fileInput = $("#vdrxls_file"),
+            $fileDrop = $("#vdrxls_drop"),
+            $list = $("#vdrxls_list"),
+            $message = $("#vdrxls_message"),
+            rABS = typeof FileReader !== "undefined" && typeof FileReader.prototype !== "undefined" && typeof FileReader.prototype.readAsBinaryString !== "undefined",
+            hash = getHash();
+        $fileDrop
+            .on("dragover", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                $(this).addClass("dragging");
+            })
+            .on("dragleave", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                $(this).removeClass("dragging");
+            })
+            .on("drop", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.originalEvent.dataTransfer.dropEffect = "copy";
+
+                $(this).removeClass("dragging");
+
+                readFile(e.originalEvent.dataTransfer.files[0]);
+            });
+
+        $fileInput.on("change", function(e) {
+            var file = e.target.files[0];
+
+            readFile(file);
+        });
+
+        function readFile(file) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var data = e.target.result,
+                    wb,
+                    sheetJson;
+                
+                if (!rABS) {
+                    data = new Uint8Array(data);
+                }
+
+                wb = XLSX.read(data, {
+                    type: rABS ? "binary" : "array"
+                });
+
+                sheetJson = XLSX.utils.sheet_to_json(wb.Sheets.Sheet1, {header: 0, raw: true});
+
+            
+                importFromExcel(sheetJson);
+
+            };
+
+            rABS ? reader.readAsBinaryString(file) : reader.readAsArrayBuffer(file);
+        }    
+
+
+        function getHash() {
+            var hash = location.hash.substr(1),
+                params = {};
+            
+            hash.split("&").map(x => {
+                var t = x.split("=");
+                    params[t[0]] = t[1];
+            });
+
+            return params;
+        }
+
+        window.addEventListener("hashchange", function () {
+            hash = getHash();
+            }, false);
+
+    });
+</script>
